@@ -38,7 +38,7 @@ Instead:
 - `assets/template.html` already contains the CSS, the JS progress/badge/
   confetti engine, and the embedded Glovo Sans fonts (base64, offline-safe) —
   copied verbatim from the first working version of this page. It has 8 placeholders
-  (`{{TITLE}}`, `{{BUDDY_NAME}}`, etc.) for the parts that vary by person.
+  (`{% raw %}{{TITLE}}{% endraw %}`, `{% raw %}{{BUDDY_NAME}}{% endraw %}`, etc.) for the parts that vary by person.
 - `scripts/build_onboarding.py` takes a `data.json` (the content you gather
   and decide, per person) and mechanically substitutes it into the template.
   It refuses to write a file if any placeholder is left unfilled or the JSON
@@ -156,7 +156,7 @@ the template to work around it.
   checkboxes, confirm progress/badges/confetti behave, and that no Slack
   link 404s.
 - If there's no browser available in this environment, at minimum grep the
-  output for `{{` (should find nothing — the build script already checks
+  output for `{% raw %}{{{% endraw %}` (should find nothing — the build script already checks
   this) and spot-check a few of the Slack URLs and Jira links resolve to
   real, current pages.
 - Mention to the requester: progress is saved in `localStorage` per browser
